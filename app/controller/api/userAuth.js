@@ -103,10 +103,9 @@ module.exports = {
     },
     async update(req, res){
         const {email, password, name} = req.body;
+        const userId = req.user.id;
         const user = await prisma.user.update({
-            where: {
-              id: parseInt(req.params.id), // Sesuaikan dengan nama kolom ID yang digunakan di model Prisma
-            },
+            where: {id: userId},
             data: {
                 name,
                 email,

@@ -37,15 +37,10 @@ module.exports = {
     },
 
     async getById(req, res){
-        if(!req.params.id) res.status(400).json({ 
-            status: 'fail', 
-            code: 400, 
-            message: 'Bad Request! id is required',
-        })
-    
+        
         const user = await prisma.user.findUnique({
             where: {
-                id: parseInt(req.params.id),},
+                id: req.user.id},
                 include: {data: true,},
             });
     

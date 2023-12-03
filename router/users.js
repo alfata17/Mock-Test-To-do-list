@@ -7,7 +7,7 @@ const { auth } = require('../utils/jwt')
 const controller = require('../app/controller')
 
 router.get('/api/users', controller.users.get)
-router.get('/api/users/:id', controller.users.getById)
+router.get('/api/users/login', auth, controller.users.getById)
 router.delete('/api/users/:id', controller.users.destroy)
 
 module.exports = router;
